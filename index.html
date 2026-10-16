@@ -511,10 +511,9 @@
 #diagram-image[hidden],#diagram-interactive[hidden]{display:none}
 #diagram-interactive{position:absolute;left:0;top:0;transform-origin:0 0}
 #diagram-interactive .deck-interactive-svg{width:100%;height:100%;max-width:none;max-height:none}
-#diagram-tools{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;padding:8px;background:var(--teal);color:white;border-radius:5px;font:14px Inter,sans-serif}
-#diagram-tools button{font:inherit;cursor:pointer;color:white;border:1px solid #71868c;background:transparent;padding:8px 12px;min-width:40px}
+#diagram-tools{position:absolute;top:12px;right:12px;display:flex;gap:3px;align-items:center;padding:3px;background:var(--teal);color:white;border-radius:5px;font:10px Inter,sans-serif}
+#diagram-tools button{font:inherit;cursor:pointer;color:white;border:1px solid #71868c;background:transparent;padding:2px 6px;min-width:22px}
 #diagram-tools button:focus-visible{outline:2px solid var(--orange)}
-#diagram-title{max-width:45vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
 @media screen{
 html.mode-reader .deck-content.pad{padding:24px 22px 90px;gap:18px}
 html.mode-reader .deck-slide .slide-title{font-size:28px}
@@ -528,7 +527,6 @@ html.mode-reader .deck-interactive-svg{height:auto;max-height:none;width:100%}
 html.mode-reader .diagram-actions{flex-wrap:wrap}
 html.mode-reader .head--interactive{flex-wrap:wrap}
 html.mode-reader .deck-slide.slide--title .slide-title{font-size:36px}
-html.mode-reader #diagram-title{display:none}
 }
 @media print{
 #diagram-view{display:none!important}
@@ -3001,11 +2999,10 @@ html.mode-reader #diagram-title{display:none}
  <img id="diagram-image" alt="">
  <div id="diagram-interactive" hidden></div>
  <div id="diagram-tools">
-  <span id="diagram-title"></span>
   <button type="button" id="zoom-out" aria-label="Zoom out">-</button>
   <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
   <button type="button" id="zoom-fit">Fit</button>
-  <button type="button" id="zoom-close">Close (Esc)</button>
+  <button type="button" id="zoom-close">Close</button>
  </div>
 </div>
 <script>
@@ -3051,7 +3048,6 @@ html.mode-reader #diagram-title{display:none}
   const isInteractive=image.matches('.deck-interactive-svg');
   picture.hidden=isInteractive;interactive.hidden=!isInteractive;
   surface=isInteractive?interactive:picture;
-  document.getElementById('diagram-title').textContent=isInteractive?image.querySelector('title')?.textContent:image.alt;
   if(isInteractive){
    source=image;home=image.parentNode;nextSibling=image.nextSibling;
    width=image.viewBox.baseVal.width;height=image.viewBox.baseVal.height;
